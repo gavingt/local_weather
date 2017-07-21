@@ -96,10 +96,30 @@ textarea {
    ========================================================================== */
 
 
+@media (max-width: 767px) {
+    .col2 {
+        margin-bottom: 20px;
+    }
+}
+
 @media (max-width: 650px) {
-    .col2, .col3 {
-        display: inline-block;
-        max-width: 70%;
+    .content {
+        min-width: 90%;
+        padding: 10px;
+    }
+
+    #weather-icon {
+        max-width: 90%;
+    }
+
+    .number {
+        font-size: 2em !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .number {
+        font-size: 1.9em !important;
     }
 }
 
@@ -127,6 +147,11 @@ body, html {
     padding: 20px;
 }
 
+.container {
+    width: 100%;
+    padding: 0;
+}
+
 
 #weather-icon {
     border: 2px solid gray;
@@ -136,13 +161,19 @@ body, html {
 }
 
 .column {
-    width: 33%;
     text-align: center;
 }
 
-.number {
-    font-size: 40px;
+.col1 {
+    width: 70%;
+    margin-left: 20px;
 }
+
+.number {
+    font-size: 3em;
+    line-height: 1.3em;
+}
+
 
 hr {
     width: 60%;
@@ -150,7 +181,7 @@ hr {
 }
 
 
-.badge {
+.powered-by-badge {
     right: 0;
     bottom: 0;
     position: absolute;
