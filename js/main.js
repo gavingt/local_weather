@@ -20,6 +20,8 @@ function getForecast(position) {
         url: 'https://api.darksky.net/forecast/44b1a52501d19f076cdd704b05cbfadc/' + position.coords.latitude + "," + position.coords.longitude,
         success: function(data) {
 
+            $(".content, .temp-scale-switcher, .powered-by-badge").css('visibility','visible').hide().fadeIn('slow');
+
             tempFahrenheit = data.currently.temperature.toFixed(1);
             tempCelsius = (tempFahrenheit - 32)*(5/9);
             tempCelsius = tempCelsius.toFixed(1);
