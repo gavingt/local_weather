@@ -7,13 +7,33 @@ $(document).ready(function() {
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(getForecast); //call getForecast as an async success function. getCurrentPosition requires as an input a function that itself has an input representing the current position
+        navigator.geolocation.getCurrentPosition(getForecast, showError, {timeout:10000}); //call getForecast as an async success function. getCurrentPosition requires as an input a function that itself has an input representing the current position
 
     } else {
         weatherText.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
+
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            alert("User denied the request for Geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
+    }
+}
+
 function getForecast(position) {
+
     $.ajax( {
         type: "POST",
         dataType: 'jsonp',
